@@ -27,7 +27,9 @@ async function verifyToken(token) {
         throw new Error('Invalid Auth0 token');
     }
 }
-
+app.get("/",(req,res)=>{
+ res.status(400).json({ error: 'Token is required' })
+})
 app.post('/auth/callback', async (req, res) => {
     try {
         const { token } = req.body;
